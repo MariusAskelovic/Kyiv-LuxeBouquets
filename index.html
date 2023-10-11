@@ -14,35 +14,71 @@
         rel="stylesheet">
     <title>Kyiv LuxeBouquets</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="body">
     <!-- Header -->
     <header class="header">
-        <div class="left">
+        <div class="left links">
             <div class="hidden">
-                <a href="#">ONE</a>
-                <a href="#">TWO</a>
+                <div class="desktopHeaderEl">
+                    <a class="linkNormal" href="#">Shop</a>
+                    <a class="linkHover" href="#">Shop</a>
+                </div>
+                <div class="desktopHeaderEl">
+                    <a class="linkNormal" href="#">Contact</a>
+                    <a class="linkHover" href="#">Contact</a>
+                </div>
             </div>
-            <div class="icon">
+            <div class="icon mobile" id="menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
-        <div class="right">
+        <div class="right links">
             <div class="hidden">
-                <a href="#">THREE</a>
-                <a href="#">FOUR</a>
+                <div class="desktopHeaderEl">
+                    <a class="linkNormal" href="#">Sign in</a>
+                    <a class="linkHover" href="#">Sign in</a>
+                </div>
+                <div class="desktopHeaderEl">
+                    <a class="linkNormal" href="#">Cart</a>
+                    <a class="linkHover" href="#">Cart</a>
+                </div>
             </div>
-            <div class="icon">
+            <div class="icon mobile">
                 <i class="fa-solid fa-cart-plus"></i>
             </div>
         </div>
     </header>
 
+    <!-- Header Dropdown Menu -->
+    <div class="headerMenu">
+        <div class="mainList">
+            <a class="link" href="#">Sign in</a>
+            <a class="link" href="#">Shop</a>
+            <a class="link" href="#">Service</a>
+            <a class="link" href="#">Contact</a>
+            <a class="link" href="#">About us</a>
+        </div>
+        <div class="secondList">
+            <a class="link" href="#">Shipping & returns</a>
+            <a class="link" href="#">Terms & conditions</a>
+            <a class="link" href="#">Privacy policy</a>
+        </div>
+        <div class="socialLinks">
+            <a href="https://www.instagram.com"><img class="img" src="icons/instagram.png" alt="instagram"></a>
+            <a href="https://www.pinterest.com"><img class="img" src="icons/pinterest.png" alt="pinterest"></a>
+            <a href="https://www.facebook.com"><img class="img" src="icons/facebook.png" alt="facebook"></a>
+            <a href="https://www.twitter.com"><img class="img" src="icons/twitter.png" alt="twitter"></a>
+            <a href="https://www.telegram.com"><img class="img" src="icons/telegram.png" alt="telegram"></a>
+        </div>
+    </div>
+
     <!-- Main + Cards -->
     <section class="mainAndCards">
         <!-- Main -->
-        <main class="container main">
+        <main class="container main" id="sticky">
             <div class="top">
                 <h1 class="title transition">Kyiv <span class="newLine">LuxeBouquet<i
                             class="fa-regular fa-registered regIcon"></i></span></h1>
@@ -64,11 +100,13 @@
             </div>
         </main>
         <!-- Cards -->
-        <section class="cards">
+        <section class="cards" id="notSticky">
             <div class="card">
                 <div class="text">
                     <h3 class="title transition">Fresh Flowers</h3>
-                    <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    <div class="shopNow">
+                        <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="imgBlock right">
                     <img class="img" src="/images/card1.webp" alt="fresh flowers">
@@ -80,13 +118,17 @@
                 </div>
                 <div class="text right">
                     <h3 class="title transition">Dried Flowers</h3>
-                    <a class="link" href="#"><i class="fa-solid arrowIcon fa-arrow-left"></i> Shop now</a>
+                    <div class="shopNow">
+                        <a class="link" href="#"><i class="fa-solid arrowIcon fa-arrow-left"></i> Shop now</a>
+                    </div>
                 </div>
             </div>
             <div class="card">
                 <div class="text">
                     <h3 class="title transition">Live Plants</h3>
-                    <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    <div class="shopNow">
+                        <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="imgBlock right">
                     <img class="img" src="/images/card3.webp" alt="live plants">
@@ -98,13 +140,17 @@
                 </div>
                 <div class="text right">
                     <h3 class="title transition">Aroma Candels</h3>
-                    <a class="link" href="#"><i class="fa-solid arrowIcon fa-arrow-left"></i> Shop now</a>
+                    <div class="shopNow">
+                        <a class="link" href="#"><i class="fa-solid arrowIcon fa-arrow-left"></i> Shop now</a>
+                    </div>
                 </div>
             </div>
             <div class="card">
                 <div class="text">
                     <h3 class="title transition">Fresheners</h3>
-                    <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    <div class="shopNow">
+                        <a class="link" href="#">Shop now <i class="fa-solid arrowIcon fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="imgBlock right">
                     <img class="img" src="/images/card5.webp" alt="fresheners">
@@ -137,38 +183,47 @@
         <div class="container mainTitleBlock">
             <h2 class="mainTitle">Why choose us?</h2>
         </div>
-        <div class="container cards">
-            <div class="card">
-                <h3 class="title">Stylish bouquets by florists</h3>
-                <p class="text">At our floral studio, our professional florists craft the most elegant and stylish
-                    bouquets using only the freshest and highest quality materials available. We stay up-to-date with
-                    the latest floral design trends and offer unique arrangements that are sure to impress. Let us
-                    brighten up your day with our stunning bouquets and same-day delivery service.</p>
+        <div class="rightColumn">
+            <div class="container cards">
+                <div class="card">
+                    <h3 class="title">Stylish bouquets by florists</h3>
+                    <p class="text">At our floral studio, our professional florists craft the most elegant and stylish
+                        bouquets using only the freshest and highest quality materials available. We stay up-to-date
+                        with
+                        the latest floral design trends and offer unique arrangements that are sure to impress. Let us
+                        brighten up your day with our stunning bouquets and same-day delivery service.</p>
+                </div>
             </div>
-        </div>
-        <div class="container cards">
-            <div class="card">
-                <h3 class="title">On-time delivery</h3>
-                <p class="text">Never miss a moment with our on-time flower delivery service. Our couriers will deliver
-                    your bouquet personally, without boxes, to ensure it arrives in perfect condition. Trust us to
-                    deliver your thoughtful gift reliably.</p>
+            <div class="container cards">
+                <div class="card">
+                    <h3 class="title">On-time delivery</h3>
+                    <p class="text">Never miss a moment with our on-time flower delivery service. Our couriers will
+                        deliver
+                        your bouquet personally, without boxes, to ensure it arrives in perfect condition. Trust us to
+                        deliver your thoughtful gift reliably.</p>
+                </div>
             </div>
-        </div>
-        <div class="container cards">
-            <div class="card">
-                <h3 class="title">Safe payment</h3>
-                <p class="text">You can feel secure when placing an order with us, as we use industry-standard security
-                    measures to protect your payment information. Your transaction will be safe and hassle-free, so you
-                    can shop with confidence.</p>
+            <div class="container cards">
+                <div class="card">
+                    <h3 class="title">Safe payment</h3>
+                    <p class="text">You can feel secure when placing an order with us, as we use industry-standard
+                        security
+                        measures to protect your payment information. Your transaction will be safe and hassle-free, so
+                        you
+                        can shop with confidence.</p>
+                </div>
             </div>
-        </div>
-        <div class="container cards">
-            <div class="card">
-                <h3 class="title">Subscription by your needs</h3>
-                <p class="text">With our subscription service tailored to your specific needs, you can enjoy the
-                    convenience of having beautiful bouquets delivered straight to your door at regular intervals. Our
-                    flexible service is perfect for busy individuals or those who want to ensure they always have fresh
-                    flowers on hand. You'll save time and money with this hassle-free solution to your floral needs.</p>
+            <div class="container cards">
+                <div class="card">
+                    <h3 class="title">Subscription by your needs</h3>
+                    <p class="text">With our subscription service tailored to your specific needs, you can enjoy the
+                        convenience of having beautiful bouquets delivered straight to your door at regular intervals.
+                        Our
+                        flexible service is perfect for busy individuals or those who want to ensure they always have
+                        fresh
+                        flowers on hand. You'll save time and money with this hassle-free solution to your floral needs.
+                    </p>
+                </div>
             </div>
         </div>
     </section>

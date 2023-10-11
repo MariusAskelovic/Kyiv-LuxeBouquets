@@ -18,6 +18,12 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.active {
+  display: none;
+}
+.body {
+  position: relative;
+}
 .caps {
   text-transform: uppercase;
 }
@@ -45,6 +51,9 @@ ul {
   align-items: center;
   height: 48px;
   border-bottom: var(--border);
+  .links {
+    transition: all 0.4s ease-in-out;
+  }
   .icon {
     width: 48px;
     height: 48px;
@@ -59,11 +68,58 @@ ul {
   .right {
     border-left: var(--border);
   }
+  .links a:hover {
+    color: red;
+    perspective: 100%;
+    transform: rotateX(180deg);
+  }
+}
+// ===== Header Dropdown Menu
+.headerMenu {
+  position: absolute;
+  background-color: #fff;
+  width: 100vw;
+  z-index: 10;
+  display: none;
+  transition: all 0.4s ease-in-out;
+  .mainList {
+    display: flex;
+    flex-direction: column;
+    .link {
+      font-size: 28px;
+      padding: 36px 5vw;
+      border-bottom: var(--border);
+    }
+  }
+  .secondList {
+    display: flex;
+    flex-direction: column;
+    padding: 5vw 0;
+    border-bottom: var(--border);
+    .link {
+      font-size: 18px;
+      padding: 10px 5vw;
+    }
+  }
+  .socialLinks {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5vw 0;
+    border-bottom: var(--border);
+    .img {
+      height: 28px;
+    }
+  }
+}
+.active {
+  display: block;
 }
 // ===== Main
 .mainAndCards {
   display: flex;
   flex-direction: column;
+  z-index: -1;
   .main {
     .top {
       border-bottom: var(--border);
@@ -118,7 +174,9 @@ ul {
       grid-template-columns: repeat(2, 1fr);
       position: relative;
       border-bottom: var(--border);
+      overflow: hidden;
       height: 50vw;
+
       .text {
         display: flex;
         justify-content: center;
@@ -129,19 +187,31 @@ ul {
           font-weight: 400;
           padding: 0 16px;
         }
-        .link {
+        .shopNow {
           position: absolute;
           bottom: 10px;
-          font-size: 14px;
-        }
-        .arrowIcon {
-          font-size: 14px;
-          transform: translateY(2px);
+          width: 100%;
+          .link {
+            font-size: 14px;
+          }
+          .link:hover {
+            text-decoration: underline;
+          }
+          .arrowIcon {
+            transition: all 0.2s ease-in-out;
+          }
+          .fa-arrow-right {
+            transform: translate(4px, 3px);
+          }
+          .fa-arrow-left {
+            transform: translate(-4px, 3px);
+          }
         }
       }
       .imgBlock {
         overflow: hidden;
         .img {
+          transition: all 0.4s ease-in-out;
           object-fit: cover;
           height: 100%;
         }
@@ -150,9 +220,17 @@ ul {
         border-left: var(--border);
       }
     }
+    .card:hover .imgBlock .img {
+      scale: 1.2;
+    }
+    .card:hover .text .fa-arrow-left {
+      transform: translate(-10px, 3px);
+    }
+    .card:hover .text .fa-arrow-right {
+      transform: translate(10px, 3px);
+    }
   }
 }
-
 // ===== About Us
 .aboutUs {
   display: flex;
@@ -240,6 +318,10 @@ ul {
       .socialIcons {
         display: flex;
         gap: 32px;
+        align-items: stretch;
+        a {
+          height: 100%;
+        }
         .img {
           height: 20px;
         }
@@ -400,13 +482,23 @@ ul {
     z-index: -1;
     background-position: center;
     background-attachment: fixed;
-    height: 100%;
+    background-repeat: round;
+    height: 50vw;
     width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
-    filter: saturate(0.5);
-    opacity: 0.9;
+  }
+  .bgImgContainer::after {
+    content: '';
+    background-color: #000;
+    z-index: -1;
+    height: 50vw;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
   }
 }
 // ===== Reviews
@@ -765,6 +857,210 @@ ul {
       .linkText {
         font-size: 16px;
       }
+    }
+  }
+}
+// 1440px+
+@media screen and (min-width: 1440px) {
+  // ===== Header
+  .header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    z-index: 20;
+    background-color: #fff;
+    top: 0;
+    .mobile {
+      display: none;
+    }
+    .left,
+    .right {
+      border: none;
+      width: 25vw;
+      text-align: center;
+      .hidden {
+        display: flex;
+        justify-content: center;
+        .desktopHeaderEl {
+          width: 12.5vw;
+          padding: 34px 32px;
+          position: relative;
+          overflow: hidden;
+          // transition: all 0.5s ease-in-out;
+          .linkNormal {
+            position: absolute;
+            padding: 4px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.2s ease-in-out;
+          }
+          .linkHover {
+            position: absolute;
+            padding: 4px;
+            color: #808080;
+            top: 150%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease-in-out;
+          }
+        }
+        .desktopHeaderEl:hover {
+          .linkHover {
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+          .linkNormal {
+            transform: translate(-50%, -100px);
+          }
+        }
+      }
+    }
+    .left {
+      grid-column-start: 1;
+      .desktopHeaderEl {
+        border-right: var(--border);
+      }
+    }
+    .right {
+      grid-column-start: 4;
+      .desktopHeaderEl {
+        border-left: var(--border);
+      }
+    }
+  }
+  // ===== Main + Cards
+  .mainAndCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100vh;
+    .main {
+      height: 50vw;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      .bottom {
+        .imgBlock {
+          height: auto;
+        }
+      }
+    }
+    .cards {
+      border-top: none;
+      border-left: var(--border);
+      height: 125vw;
+      .card {
+        height: 25vw;
+      }
+      .card:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  // ===== About Us
+  .aboutUs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: var(--border);
+    .mainTitleBlock {
+      border-bottom: none;
+    }
+    .textBlock {
+      border-left: var(--border);
+    }
+  }
+  // ===== Why Us
+  .whyUs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .rightColumn {
+      border-left: var(--border);
+    }
+  }
+  // ===== Contacts
+  .contacts {
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+    height: 48vw;
+    .socialBlock {
+      width: 50vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: var(--border);
+      .imgBlock {
+        aspect-ratio: unset;
+        height: auto;
+      }
+      .socialLinksBlock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-end;
+        padding: 0;
+        .text {
+          width: 25vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+        }
+        .socialIcons {
+          width: 25vw;
+          justify-content: center;
+          align-items: center;
+          border-left: var(--border);
+          padding: 20px 0;
+        }
+      }
+    }
+    .contactsInfo {
+      width: 50vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .callUs {
+        border: none;
+      }
+      .contactInfoBlock {
+        border-top: var(--border);
+      }
+    }
+  }
+  // ===== Our Service
+  .ourService {
+    border-bottom: var(--border);
+    .infoBlock {
+      display: flex;
+      height: 50vw;
+      .imgBlock {
+        height: 100%;
+      }
+      .textBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  // ===== Service 2
+  .serviceBgBlock {
+    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .textBlock {
+      width: 750px;
+    }
+  }
+  // ===== Reviews
+  // ===== Footer
+  .footer {
+    grid-template-columns: repeat(4, 1fr);
+    .card:nth-child(3) {
+      border-left: var(--border);
     }
   }
 }
