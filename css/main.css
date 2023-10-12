@@ -25,6 +25,20 @@ a {
   display: none;
 }
 
+.btnWhite:hover {
+  background-color: black;
+  color: white;
+}
+
+.btnBlack:hover {
+  background-color: red;
+}
+
+.btnTransparent:hover {
+  background-color: white;
+  font-size: 40px;
+}
+
 .body {
   position: relative;
 }
@@ -549,8 +563,9 @@ ul {
   z-index: -1;
   background-position: center;
   background-attachment: fixed;
-  background-repeat: round;
-  height: 50vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
   width: 100vw;
   position: absolute;
   top: 0;
